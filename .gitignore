@@ -1,0 +1,46 @@
+# =============== #
+# Unity .gitignore #
+# =============== #
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
+*.user
+*.suo
+*.userprefs
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.svd
+*.pdb
+*.mdb
+
+# Unity generated folders
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+MemoryCaptures/
+
+# User settings
+UserSettings/
+
+# Asset Store tools
+Assets/AssetStoreTools*
+
+# Cache
+*.apk
+*.unitypackage
+
+# VS Code
+.vscode/
+.vs/
+
+# Crash reports
+sysinfo.txt
