@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 774706745}
   - component: {fileID: 774706744}
   - component: {fileID: 774706743}
+  - component: {fileID: 774706746}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -1264,6 +1265,7 @@ MonoBehaviour:
   fallMultiplier: 3.5
   lowJumpMultiplier: 3
   maxJumpTime: 0.2
+  doubleJumpForce: 4
 --- !u!50 &774706744
 Rigidbody2D:
   serializedVersion: 5
@@ -1337,6 +1339,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &774706746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774706737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5832f5b7d1cbf42b488137b8e766bfad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalScaleX: 1
+  normalScaleY: 1
+  smallScaleX: 0.5
+  smallScaleY: 0.5
+  cinemachineCamera: {fileID: 901335301}
+  normalCameraSize: 5
+  smallCameraSize: 2.5
+  zoomSpeed: 5
 --- !u!1 &901335299
 GameObject:
   m_ObjectHideFlags: 0

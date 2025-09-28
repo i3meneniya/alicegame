@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private float jumpTimecounter;
     public float maxJumpTime = 0.5f;
+    public float doubleJumpForce = 4f;
+    private bool canDoubleJump = false;
+    private bool wasGrounded = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +34,15 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             jumpTimecounter = maxJumpTime;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);   
+            canDoubleJump = true;
+        }
+        
+        else if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && canDoubleJump)
+        {
+            isJumping = true;
+            jumpTimecounter = maxJumpTime;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
+            canDoubleJump = false;
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping)
@@ -72,6 +84,13 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
         
         isGrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckRadius, groundLayer);
+
+        if (isGrounded && !wasGrounded)
+        {
+            canDoubleJump = false;
+        }
+        
+        wasGrounded = isGrounded;
     }
 
     private void OnDrawGizmosSelected()
