@@ -18,10 +18,24 @@ public class PlayerMovement : MonoBehaviour
     public float maxJumpTime = 0.5f;
     public float doubleJumpForce = 4f;
     private bool canDoubleJump = false;
+    private float baseSpeed;
+    private float baseJumpForce;
+    private float baseDoubleJumpForce;
+    private float baseGroundcheckRadius;
+    private float baseGravityScale;
+    private float baseFallMultiplier;
+    private float baseLowJumpMultiplier;
     private bool wasGrounded = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        baseSpeed = speed;
+        baseJumpForce = jumpForce;
+        baseDoubleJumpForce = doubleJumpForce;
+        baseGroundcheckRadius = groundcheckRadius;
+        baseGravityScale = rb.gravityScale;
+        baseFallMultiplier = fallMultiplier;
+        baseLowJumpMultiplier = lowJumpMultiplier;
     }
     void Update()
     {
@@ -77,6 +91,18 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
         }
+    }
+
+    // Scale movement stats proportionally to size factor (1 = original size)
+    public void ApplyScale(float scaleFactor)
+    {
+        speed = baseSpeed * scaleFactor;
+        jumpForce = baseJumpForce * scaleFactor;
+        doubleJumpForce = baseDoubleJumpForce * scaleFactor;
+        groundcheckRadius = baseGroundcheckRadius * scaleFactor;
+        rb.gravityScale = baseGravityScale * scaleFactor;
+        fallMultiplier = baseFallMultiplier * scaleFactor;
+        lowJumpMultiplier = baseLowJumpMultiplier * scaleFactor;
     }
 
     void FixedUpdate()

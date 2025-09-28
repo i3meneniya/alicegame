@@ -19,12 +19,14 @@ public class ChangingSize : MonoBehaviour
     private Vector3 originalScale;
     private float targetCameraSize;
     private Vector3 targetScale;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
         originalScale = transform.localScale;
         targetCameraSize = normalCameraSize;
         targetScale = originalScale;
+        playerMovement = GetComponent<PlayerMovement>();
         
         if (cinemachineCamera != null)
         {
@@ -42,6 +44,12 @@ public class ChangingSize : MonoBehaviour
         }
 
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, zoomSpeed * Time.deltaTime);
+        
+        if (playerMovement != null && originalScale.y > 0f)
+        {
+            float scaleFactor = transform.localScale.y / originalScale.y;
+            playerMovement.ApplyScale(scaleFactor);
+        }
         
         if (cinemachineCamera != null)
         {

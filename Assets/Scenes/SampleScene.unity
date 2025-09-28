@@ -1353,11 +1353,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalScaleX: 1
   normalScaleY: 1
-  smallScaleX: 0.5
-  smallScaleY: 0.5
+  smallScaleX: 0.25
+  smallScaleY: 0.25
   cinemachineCamera: {fileID: 901335301}
   normalCameraSize: 5
-  smallCameraSize: 2.5
+  smallCameraSize: 1.25
   zoomSpeed: 5
 --- !u!1 &901335299
 GameObject:
